@@ -18,7 +18,7 @@ def root():
         raise HTTPException(status_code=500, detail=f'Internal server error: {e}')
         
 
-@app.post('/add_task', respomse_model=Task)
+@app.post('/add_task', response_model=Task)
 def create_task(task: str):
     try:
         result = add_task(task)
