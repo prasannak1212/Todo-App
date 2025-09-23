@@ -3,9 +3,9 @@ from bson import ObjectId
 
 def get_tasks():
     task_list = task_collection.find()
-    return task_list.model_dump()
+    return list(task_list)
 
-def add_task(task: str):
+def add_task(task):
     return task_collection.insert_one(task)
 
 def delete_task(task_id: str):
