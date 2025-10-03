@@ -1,4 +1,9 @@
 fastapi
 pydantic
-pymongo
+pymongo[srv]
 uvicorn
+gunicorn
+python-dotenv
+motor
+requests
+python-multipart

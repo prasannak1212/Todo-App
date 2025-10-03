@@ -1,12 +1,11 @@
 from .db import task_collection
 from bson import ObjectId
 
-def get_tasks():
-    task_list = task_collection.find()
-    return list(task_list)
+async def get_tasks():
+    return await task_collection.find().to_list(length=None)
 
-def add_task(task):
-    return task_collection.insert_one(task)
+async def add_task(task):
+    return await task_collection.insert_one(task)
 
-def delete_task(task_id: str):
-    return task_collection.delete_one({"_id": ObjectId(task_id)})
+async def delete_task(task_id: str):
+    return await task_collection.delete_one({"_id": ObjectId(task_id)})
