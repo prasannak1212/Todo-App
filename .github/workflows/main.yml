@@ -25,4 +25,4 @@ jobs:
 
       - name: SSH and deploy
         run: |
-          ssh -i ~/.ssh/id_rsa ec2-user@13.60.254.238 'bash -s' < ./deploy.sh
+          ssh -i ~/.ssh/id_rsa ec2-user@13.60.254.238 'bash -s' < ~/deploy.sh
