@@ -1,0 +1,28 @@
+name: CI/CD Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Copy SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Add EC2 to known hosts
+        run: |
+          ssh-keyscan -H your-ec2-ip >> ~/.ssh/known_hosts
+
+      - name: SSH and deploy
+        run: |
+          ssh -i ~/.ssh/id_rsa ec2-user@13.60.254.238 'bash -s' < ./deploy.sh
