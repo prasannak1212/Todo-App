@@ -21,7 +21,7 @@ jobs:
 
       - name: Add EC2 to known hosts
         run: |
-          ssh-keyscan -H your-ec2-ip >> ~/.ssh/known_hosts
+          ssh-keyscan -H 13.60.254.238 >> ~/.ssh/known_hosts
 
       - name: SSH and deploy
         run: |
